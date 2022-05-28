@@ -4,20 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \App\Models\Libro;
 
-class Editorial extends Model
+class Reservas extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
-        'localización'
+        'id_libro',
+        'id_usuario',
     ];
-
-    public function libros(){
-        return $this->hasMany(Libro::class);
-    }
 }

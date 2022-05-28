@@ -6,15 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use \App\Models\Libro;
 
-class Editorial extends Model
+class Categoria extends Model
 {
     use HasFactory;
 
     public $timestamps = false;
 
     protected $fillable = [
-        'nombre',
-        'localización'
+        'nombre'
     ];
 
     public function libros(){

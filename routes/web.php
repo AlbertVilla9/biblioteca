@@ -21,17 +21,20 @@ Route::get('/', function () {
 
 })->name('home');
 
-Route::get('/index', function() {
-
-    $libros = Libro::paginate(10);
-    return view('index')->with('libros', $libros);
-
-})->middleware(['auth'])->name('index');
-
 Route::get('/dashboard', function () {
 
-    return view('dashboard');
+    $libros = Libro::paginate(10);
+    return view('dashboard')->with('libros', $libros);
 
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/crearLibros', function () {
+    return view('crearLibros');
+})->middleware(['auth'])->name('crearlibros');
+
+Route::get('/creaLibro', [\App\Http\Controllers\CrearLibroController::class, 'crear'])->middleware(['auth'])->name('crearLibro');
+
+Route::get('/detalles', [\App\Http\Controllers\DetallesController::class, 'detalles'])->middleware(['auth'])->name('detalles');
+
 
 require __DIR__.'/auth.php';

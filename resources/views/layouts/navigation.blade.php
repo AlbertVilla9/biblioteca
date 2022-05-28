@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-amber-400 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -15,11 +15,14 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Libros') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
-                        {{ __('Categorias') }}
+                    <x-nav-link :href="route('crearlibros')">
+                        {{ __('Crear') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')">
-                        {{ __('Autores') }}
+                        {{ __('Editar') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('dashboard')">
+                        {{ __('Eliminar') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -66,12 +69,10 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
+    
     <div>
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('index')">
-                {{ __('Categorias') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('index')">
+        <div class="pt-2 pb-3 space-y-1 hidden">
+            <x-responsive-nav-link>
                 {{ __('Categorias') }}
             </x-responsive-nav-link>
         </div>
