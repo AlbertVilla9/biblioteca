@@ -23,7 +23,7 @@
                     <div class="container p-4 flex flex-wrap justify-center">
 
                         @foreach($libros as $libro)
-                        <div class=" m-5 text-center">
+                        <div class=" m-5 text-center items-center">
                             <form action="{{ route('detalles') }}" method="GET">
                                 <input name="id" id="id" type="hidden" value="{{ $libro->id }}">
 

@@ -14,21 +14,13 @@
                 <a href="{{ route('login') }}" class="flex pt-1 mx-2 w-24 h-10 justify-center text-xl bg-green-600 hover:bg-blue-600 border-black rounded-bl-xl rounded-br-xl border border-t-0">
                     Log in
                 </a>
-                
-                <a href="" class=" flex pt-1 mx-2 w-24 h-10 justify-center text-xl bg-green-600 hover:bg-blue-600 border-black rounded-bl-xl rounded-br-xl border border-t-0">
-                    Register
-                </a>
 
                 <a href="{{ route('home') }}" class="flex pt-1 mx-2 w-10 h-10">
                     <img src="\img\icono.png" alt="Icono Biblioteca">
                 </a>
-
-                <a href="" class=" flex mx-2 pt-1 w-24 h-10 justify-center text-xl bg-green-600 hover:bg-blue-600 border-black rounded-bl-xl rounded-br-xl border border-t-0">
-                    Categorias
-                </a>
-
-                <a href="" class=" flex mx-2 pt-1 w-24 h-10 justify-center text-xl bg-green-600 hover:bg-blue-600 border-black rounded-bl-xl rounded-br-xl border border-t-0">
-                    Editoriales
+                
+                <a href="{{ route('register') }}" class=" flex pt-1 mx-2 w-24 h-10 justify-center text-xl bg-green-600 hover:bg-blue-600 border-black rounded-bl-xl rounded-br-xl border border-t-0">
+                    Register
                 </a>
             </header>
             
@@ -37,8 +29,8 @@
                 <div class="container p-4 flex flex-wrap justify-center">
 
                     @foreach($libros as $libro)
-                    <div class=" m-2 text-center">
-                        <img src="{{ $libro->imagen }}" alt="" class=" max-w-xs max-h-sm">
+                    <div class=" m-2 text-center flex flex-col">
+                        <img src="{{ $libro->imagen }}" alt="" class=" max-w-xs max-h-60 rounded-sm">
                         <br>
                         <p>
                             {{ $libro->nombre }}

@@ -23,8 +23,9 @@ class ReservasController extends Controller
 
     public function enseñar(Request $request)
     {
-        $resultado = Reservas::where('id_usuario',$request->usuario);
-        $listado = Libro::where('id', $resultado)->paginate(10);
-        return view('reservas')->with('reservas', $listado);
+        $reserva = Libro::select(['id' => Reservas::select('id_libro')
+            ->where('id_usuario', $request->usuario)
+    ])->get();
+        return view('reservas')->with('reservas', $reserva);
     }
 }

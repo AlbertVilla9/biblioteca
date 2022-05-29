@@ -19,26 +19,13 @@
 
                         @foreach($reservas as $reserva)
                         <div class=" m-5 text-center">
-                            <form action="{{ route('detalles') }}" method="GET">
-                                <input name="id" id="id" type="hidden" value="{{ $reserva->id }}">
-
-                                <button type="submit">
-                                    <img src="{{ $reserva->imagen }}" alt="Hola" class=" max-w-xs max-h-60 rounded-sm">
-                                </button>
-                            </form>
-
-                            <br>
-
-                            <p>
-                                {{ $reserva->nombre }}
-                            </p>
+                            {{ $reserva->nombre }}
                             
                         </div>
                         @endforeach
 
                     </div>
 
-                    {{ $reservas->links() }}
                     
                 </div>
             </div>
