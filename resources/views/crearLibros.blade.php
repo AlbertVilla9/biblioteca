@@ -1,14 +1,5 @@
 <x-app-layout>
     <x-slot name="header">
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-nav-link :href="route('dashboard')">
-                {{ __('Categorias') }}
-            </x-nav-link>
-            <x-nav-link :href="route('dashboard')">
-                {{ __('Autores') }}
-            </x-nav-link>
-        </div>
     </x-slot>
 
     <div class="py-12">
@@ -19,17 +10,26 @@
 
                         <form method="GET" action="{{ route('crearLibro') }}" class=" leading-loose">
                                
-                            Nombre: <input name="nombre" id="nombre" type="text" class="m-2 w-60"> <br>
+                            <p>Nombre:</p> <input name="nombre" id="nombre" type="text" class="m-2 w-60">
 
-                            Autor: <input name="autor" id="autor" type="text" class="m-2 w-60"> <br>
+                            <p>Autor:</p> <input name="autor" id="autor" type="text" class="m-2 w-60">
 
-                            Categoria: <input name="categoria" id="categoria" type="text" class="m-2 w-60"> <br>
+                            <p>Categoria:</p> 
+
+                            <select name="categoria" id="categoria" class="m-2 w-60">
+                                @foreach($categorias as $categoria)
+                                    <option value="{{ $categoria->nombre }}">
+                                        {{ $categoria->nombre }}
+                                    </option>
+                                @endforeach
+                            </select>
+
                             
-                            Editorial: <input name="editorial" id="editorial" type="text" class="m-2 w-60"> <br>
+                            <p>Editorial:</p> <input name="editorial" id="editorial" type="text" class="m-2 w-60">
 
-                            Imagen : <input name="imagen" id="imagen" type="text" class="m-2 w-60"> <br>
+                            <p>Imagen:</p> <input name="imagen" id="imagen" type="text" class="m-2 w-60">
 
-                            <div class=" m-3 place-items-center">
+                            <div class=" m-3 flex justify-center">
                                 <x-button>
                                     {{ __('Crear') }}
                                 </x-button>

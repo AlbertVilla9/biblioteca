@@ -1,60 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Biblioteca</title>
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    </head>
+<x-app-layout>
+    <x-slot name="header">
 
-    <body class="bg-black">
-
-        <div class="fixed pl-0 pr-2 p-5 h-full w-64 bg-amber-800 rounded-tr-3xl rounded-br-3xl border-amber-900 border-8 border-l-0">
-            <div class=" flex flex-col relative p-5 h-full w-56 bg-gray-400 rounded-tr-3xl rounded-br-3xl items-center  text-center">
-
-                <a href="{{ route('home') }}" class="w-20 h-20">
-                    <img src="\img\icono.png" alt="Icono Biblioteca">
-                </a>
-
-                <a href="{{ route('login') }}" class="text-2xl m-4 p-2 border-2 rounded-xl border-black bg-green-600 hover:bg-blue-600">
-                    Log in
-                </a>
-
-                <a href="" class="text-2xl m-4 p-2 border-2 rounded-xl border-black bg-orange-600 hover:bg-blue-600">
-                    Categorias
-                </a>
-
-                <a href="" class="text-2xl m-4 p-2 border-2 rounded-xl border-black bg-purple-600 hover:bg-blue-600">
-                    Autores
-                </a>
-
-            </div>
+        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+            <x-nav-link :href="route('categorias')">
+                {{ __('Categorias') }}
+            </x-nav-link>
+            <form method="GET" action="{{ route('reservas') }}">
+                <input name="usuario" type="hidden" value="{{ Auth::user()->id }}">
+                <button type="submit">
+                    <x-nav-link>
+                        {{ __('Reservas') }}
+                    </x-nav-link>
+                </button>
+            </form>
         </div>
+    </x-slot>
 
-        <div class="pl-16 lg:pl-64 h-screen w-full flex flex-col">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-amber-600 border-8 border-amber-800">
+                    <div class="container p-4 flex flex-wrap justify-center">
 
-            
-            
-            <div class="flex-grow bg-sky-500 rounded-tl-2xl rounded-bl-2xl">
+                        @foreach($categorias as $categoria)
+                        <div class=" m-5 text-center">
+                            <form action="{{ route('librosDeCategoria') }}" method="GET">
+                                <input name="nombre" id="id" type="hidden" value="{{ $categoria->nombre }}">
 
-                <div class="container p-4 flex flex-wrap justify-center">
+                                <button type="submit" class="border-black rounded-xl border-4 hover:bg-blue-600">
+                                    <p class="p-4">{{ $categoria->nombre }}</p>
+                                </button>
+                            </form>                         
+                        </div>
+                        @endforeach
 
-                    @foreach($libros as $libro)
-                    <div class=" m-2 text-center">
-                        <img src="{{ $libro->imagen }}" alt="" class=" max-w-xs max-h-sm">
-                        <br>
-                        <p>
-                            {{ $libro->nombre }}
-                        </p>
-                    </div>
-                    @endforeach
-
+                    </div>                    
                 </div>
             </div>
-            
-            <footer class="p-1 bg-gray-300 rounded-tl-2xl rounded-bl-2xl">
-                &copy; Alberto Villaescusa Simó
-            </footer>
-                    
         </div>
-
-    </body>
-</html>
+    </div>
+</x-app-layout>

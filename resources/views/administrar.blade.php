@@ -1,19 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-
-        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-nav-link :href="route('categorias')">
-                {{ __('Categorias') }}
-            </x-nav-link>
-            <form method="GET" action="{{ route('reservas') }}">
-                <input name="usuario" type="hidden" value="{{ Auth::user()->id }}">
-                <button type="submit">
-                    <x-nav-link>
-                        {{ __('Reservas') }}
-                    </x-nav-link>
-                </button>
-            </form>
-        </div>
+    <x-slot name="header" class="hidden">
     </x-slot>
 
     <div class="py-12">
@@ -24,7 +10,7 @@
 
                         @foreach($libros as $libro)
                         <div class=" m-5 text-center">
-                            <form action="{{ route('detalles') }}" method="GET">
+                            <form action="{{ route('detallesAD') }}" method="GET">
                                 <input name="id" id="id" type="hidden" value="{{ $libro->id }}">
 
                                 <button type="submit">

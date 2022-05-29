@@ -15,14 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Libros') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('crearlibros')">
+                    <x-nav-link :href="route('crearlibros')" :active="request()->routeIs('crearlibros')">
                         {{ __('Crear') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
-                        {{ __('Editar') }}
-                    </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
-                        {{ __('Eliminar') }}
+                    <x-nav-link :href="route('administrar')" :active="request()->routeIs('administrar')">
+                        {{ __('Administrar') }}
                     </x-nav-link>
                 </div>
             </div>

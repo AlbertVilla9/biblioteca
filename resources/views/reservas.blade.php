@@ -2,17 +2,12 @@
     <x-slot name="header">
 
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-nav-link :href="route('categorias')">
+            <x-nav-link :href="route('dashboard')">
                 {{ __('Categorias') }}
             </x-nav-link>
-            <form method="GET" action="{{ route('reservas') }}">
-                <input name="usuario" type="hidden" value="{{ Auth::user()->id }}">
-                <button type="submit">
-                    <x-nav-link>
-                        {{ __('Reservas') }}
-                    </x-nav-link>
-                </button>
-            </form>
+            <x-nav-link :href="route('dashboard')">
+                {{ __('Reservas') }}
+            </x-nav-link>
         </div>
     </x-slot>
 
@@ -22,20 +17,20 @@
                 <div class="p-6 bg-amber-600 border-8 border-amber-800">
                     <div class="container p-4 flex flex-wrap justify-center">
 
-                        @foreach($libros as $libro)
+                        @foreach($reservas as $reserva)
                         <div class=" m-5 text-center">
                             <form action="{{ route('detalles') }}" method="GET">
-                                <input name="id" id="id" type="hidden" value="{{ $libro->id }}">
+                                <input name="id" id="id" type="hidden" value="{{ $reserva->id }}">
 
                                 <button type="submit">
-                                    <img src="{{ $libro->imagen }}" alt="" class=" max-w-xs max-h-60 rounded-sm">
+                                    <img src="{{ $reserva->imagen }}" alt="Hola" class=" max-w-xs max-h-60 rounded-sm">
                                 </button>
                             </form>
 
                             <br>
 
                             <p>
-                                {{ $libro->nombre }}
+                                {{ $reserva->nombre }}
                             </p>
                             
                         </div>
@@ -43,7 +38,7 @@
 
                     </div>
 
-                    {{ $libros->links() }}
+                    {{ $reservas->links() }}
                     
                 </div>
             </div>
