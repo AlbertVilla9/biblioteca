@@ -2,12 +2,17 @@
     <x-slot name="header">
 
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-            <x-nav-link :href="route('dashboard')">
+            <x-nav-link :href="route('categorias')">
                 {{ __('Categorias') }}
             </x-nav-link>
-            <x-nav-link :href="route('dashboard')">
-                {{ __('Autores') }}
-            </x-nav-link>
+            <form method="GET" action="{{ route('reservas') }}">
+                <input name="usuario" type="hidden" value="{{ Auth::user()->id }}">
+                <button type="submit">
+                    <x-nav-link>
+                        {{ __('Reservas') }}
+                    </x-nav-link>
+                </button>
+            </form>
         </div>
     </x-slot>
 
